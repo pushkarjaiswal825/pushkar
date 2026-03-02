@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+// Package name for the generated code
+package example;
+
+// Define a message (a type)
+message Person {
+    string name = 1;    // Field 1: name of the person
+    int32 id = 2;       // Field 2: unique ID for the person
+    string email = 3;   // Field 3: email address of the person
+}
+
+// Define another message
+message Address {
+    string street = 1;  // Field 1: street name
+    string city = 2;    // Field 2: city name
+    string state = 3;   // Field 3: state name
+    string postal_code = 4;  // Field 4: postal code
+}
+
+// Define a service (RPC interface)
+service PersonService {
+    // A simple RPC call
+    rpc GetPersonDetails (PersonRequest) returns (Person);
+    
+    // Another RPC call
+    rpc GetAddress (PersonRequest) returns (Address);
+}
+
+// Define a request message for the RPCs
+message PersonRequest {
+    int32 person_id = 1;  // Field 1: the person ID for the request
+}
